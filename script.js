@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
   const container = document.getElementById("model-container");
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderer.setSize(800, 800);
   container.appendChild(renderer.domElement);
 
-  
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
   scene.add(ambientLight);
   const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
@@ -18,31 +16,25 @@ document.addEventListener("DOMContentLoaded", () => {
   camera.position.z = 10;
   camera.lookAt(0, 0, 0);
 
-  let mixer; 
+  let mixer;
 
-  
   const loader = new THREE.GLTFLoader();
   loader.load(
-    "./src/loading/oiiaioooooiai_cat.glb", 
+    "./src/loading/oiiaioooooiai_cat.glb",
     function (gltf) {
       const model = gltf.scene;
 
-      
       model.scale.set(12, 12, 12);
 
-      
-      model.position.set(-2, -2, 0); 
+      model.position.set(-2, -2, 0);
 
-      
       model.rotation.x = 0;
-      model.rotation.y = Math.PI / 6; 
+      model.rotation.y = Math.PI / 6;
       model.rotation.z = 0;
 
-      
       mixer = new THREE.AnimationMixer(model);
       const clips = gltf.animations;
 
-      
       clips.forEach((clip) => {
         const action = mixer.clipAction(clip);
         action.play();
@@ -50,13 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       scene.add(model);
 
-      
       const clock = new THREE.Clock();
 
       function animate() {
         requestAnimationFrame(animate);
 
-        
         if (mixer) {
           const delta = clock.getDelta();
           mixer.update(delta);
@@ -67,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
       animate();
     },
     function (xhr) {
-      
       console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
     },
     function (error) {
@@ -75,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  
   setTimeout(() => {
     const loaderContainer = document.querySelector(".loader-container");
     loaderContainer.style.opacity = "0";
@@ -120,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const audio = new Audio("/src/audio/index.mp3");
   console.log("Audio creado:", audio);
 
-  
   audio.addEventListener("loadeddata", () => {
     console.log("Audio cargado y listo para reproducir");
   });
@@ -140,14 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    
     audio.addEventListener("ended", () => {
       musicIcon.classList.remove("fa-pause");
       musicIcon.classList.add("fa-play");
     });
   }
 
-  
   function createDefaultState() {
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = `
@@ -160,17 +145,14 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  
   createDefaultState();
 
-  
   const buttons = document.querySelectorAll(".button_gallery");
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       const gallery = document.querySelector(".gallery");
-      gallery.innerHTML = ""; 
+      gallery.innerHTML = "";
 
-      
       if (button.classList.contains("gallery_fish")) {
         createCardsTops(fishGallery);
       } else if (button.classList.contains("gallery_horse")) {
@@ -185,14 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   CreateMosaic(gallery_mosaic);
 
-  
   const MUSIC_CONFIG = {
     src: "./src/audio/index.mp3",
     defaultVolume: 0.5,
     muteVolume: 0,
   };
 
-  
   class BackgroundMusic {
     constructor(config) {
       this.audio = new Audio(config.src);
@@ -225,10 +205,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     addEventListeners() {
-      
       this.button.addEventListener("click", () => this.toggleMute());
 
-      
       const startMusic = () => {
         this.audio.play().catch((error) => {
           console.log("Autoplay prevented:", error);
@@ -244,29 +222,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  
   const backgroundMusic = new BackgroundMusic(MUSIC_CONFIG);
   backgroundMusic.init();
 
-  
   const menuToggle = document.querySelector(".menu-toggle");
   const navMenu = document.querySelector(".nav-menu");
   const body = document.body;
 
-  
   const overlay = document.createElement("div");
   overlay.className = "menu-overlay";
   body.appendChild(overlay);
 
-  
   if (menuToggle && navMenu) {
     menuToggle.addEventListener("click", () => {
-      
       menuToggle.classList.toggle("active");
       navMenu.classList.toggle("active");
       overlay.classList.toggle("active");
 
-      
       const icon = menuToggle.querySelector("i");
       if (navMenu.classList.contains("active")) {
         icon.classList.remove("fa-bars");
@@ -280,7 +252,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
   overlay.addEventListener("click", () => {
     menuToggle.classList.remove("active");
     navMenu.classList.remove("active");
@@ -292,7 +263,6 @@ document.addEventListener("DOMContentLoaded", () => {
     icon.classList.add("fa-bars");
   });
 
-  
   document.querySelectorAll(".nav-list a").forEach((link) => {
     link.addEventListener("click", () => {
       menuToggle.classList.remove("active");
@@ -306,61 +276,100 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  
   const openButton = document.getElementById("openSvgPopup");
   const popup = document.getElementById("svgPopup");
   const closeButton = document.querySelector(".close-popup");
 
   if (openButton && popup && closeButton) {
-    
     openButton.addEventListener("click", function (e) {
       e.preventDefault();
       popup.style.display = "block";
       document.body.style.overflow = "hidden";
-      
     });
 
-    
     const closePopup = () => {
       popup.style.display = "none";
-      document.body.style.overflow = "";  
-      document.body.style.paddingRight = ""; 
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     };
 
-    
     closeButton.addEventListener("click", closePopup);
 
-    
     window.addEventListener("click", function (e) {
       if (e.target === popup) {
         closePopup();
       }
     });
 
-    
-    popup.querySelector(".popup-content").addEventListener("click", function (e) {
-      e.stopPropagation();
-    });
+    popup
+      .querySelector(".popup-content")
+      .addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
   } else {
     console.error("Elementos del popup no encontrados");
   }
+
+  // Manejo del formulario de contacto
+  document.querySelector('#contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.querySelector('#name').value;
+    const email = document.querySelector('#email').value;
+    const subject = document.querySelector('#subject').value;
+    const message = document.querySelector('#message').value;
+
+    if (!name || !email || !subject || !message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Campos incompletos',
+            text: 'Por favor, rellena todos los campos',
+            background: '#001233',
+            color: '#fff'
+        });
+        return;
+    }
+
+    // Animación de carga
+    Swal.fire({
+        title: 'Enviando...',
+        text: 'Espera un momento por favor',
+        background: '#001233',
+        color: '#fff',
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+        },
+        allowOutsideClick: false,
+        allowEscapeKey: false
+    });
+
+    // Simular envío
+    setTimeout(() => {
+        Swal.fire({
+            icon: 'success',
+            title: '¡Mensaje enviado!',
+            text: `Gracias ${name}, te contactaremos pronto`,
+            background: '#001233',
+            color: '#fff'
+        });
+        document.querySelector('#contactForm').reset();
+    }, 2000);
+  });
 });
 
 function createCardsTops(gallery) {
   const containerGallery = document.querySelector(".gallery");
   containerGallery.innerHTML = "";
 
-  
   const carouselWrapper = document.createElement("div");
   carouselWrapper.id = "videoCarousel";
   carouselWrapper.className = "carousel slide";
   carouselWrapper.setAttribute("data-bs-ride", "false");
 
-  
   const carouselInner = document.createElement("div");
   carouselInner.className = "carousel-inner";
 
-  
   gallery.forEach((animal, index) => {
     const slide = document.createElement("div");
     slide.className = `carousel-item ${index === 0 ? "active" : ""}`;
@@ -382,17 +391,14 @@ function createCardsTops(gallery) {
     video.setAttribute("webkit-playsinline", "");
     video.setAttribute("x5-playsinline", "");
 
-    
     video.style.width = "100%";
     video.style.height = "auto";
     video.style.maxHeight = "70vh";
 
-    
     video.addEventListener("loadedmetadata", () => {
       video.style.display = "block";
     });
 
-    
     video.addEventListener("error", (e) => {
       console.error("Error loading video:", e);
       card.innerHTML += '<p class="error-message">Error al cargar el video</p>';
@@ -404,7 +410,6 @@ function createCardsTops(gallery) {
     carouselInner.appendChild(slide);
   });
 
-  
   const prevButton = document.createElement("button");
   prevButton.className = "carousel-control-prev";
   prevButton.type = "button";
@@ -425,19 +430,16 @@ function createCardsTops(gallery) {
     <span class="visually-hidden">Next</span>
   `;
 
-  
   carouselWrapper.appendChild(carouselInner);
   carouselWrapper.appendChild(prevButton);
   carouselWrapper.appendChild(nextButton);
   containerGallery.appendChild(carouselWrapper);
 
-  
   const carousel = new bootstrap.Carousel(carouselWrapper, {
     interval: false,
     wrap: true,
   });
 
-  
   carouselWrapper.addEventListener("slide.bs.carousel", (event) => {
     const videos = carouselWrapper.querySelectorAll("video");
     videos.forEach((video) => video.pause());
