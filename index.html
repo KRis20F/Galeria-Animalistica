@@ -18,27 +18,47 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
     <div class="loader-container">
       <div class="loader">
         <div id="model-container"></div>
-        <h2>Galeria Animalistica</h2>
+        <h2 class="text-center-loading">Galeria Animalistica</h2>
         <div class="loading-bar">
           <div class="loading-progress"></div>
         </div>
       </div>
     </div>
 
-
     <!-- Include sprite -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <symbol id="icon-menu" viewBox="0 0 24 24">
-        <path
-          d="M3 6h18M3 12h18M3 18h18"
+        <line
+          x1="3"
+          y1="6"
+          x2="21"
+          y2="6"
           stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
-          stroke-linejoin="round"
+        />
+
+        <line
+          x1="3"
+          y1="12"
+          x2="21"
+          y2="12"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+
+        <line
+          x1="3"
+          y1="18"
+          x2="21"
+          y2="18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
         />
       </symbol>
       <symbol id="icon-close" viewBox="0 0 24 24">
@@ -54,17 +74,24 @@
 
     <header class="header-area">
       <h1>Galeria Animalistica</h1>
-      <div class="nav-tab">
-        <svg class="icon burger" width="24" height="24">
-          <use xlink:href="#icon-menu"></use>
-        </svg>
-        <nav class="navbar navbar-expand-lg navbar-dark"></nav>
-      </div>
+      <button class="menu-toggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#galeria">Galería de Videos</a></li>
+          <li><a href="#imagenes">Galería de Imágenes</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#" id="openSvgPopup">¿Qué es SVG?</a></li>
+          <li><a href="./src/Music-main/index.html">Musica de joji</a></li>
+        </ul>
+      </nav>
       <i class="fa-solid fa-music music-icon"></i>
     </header>
     <section id="hero">
       <div class="section_welcome">
-        <p class="text_welcome">texto de prueba</p>
+        <p class="text_welcome">Bienvenido a la galeria animalistica</p>
       </div>
       <div class="video-section">
         <div
@@ -89,37 +116,262 @@
                 <source src="./src/videos/zorrito.mp4" type="video/mp4" />
               </video>
             </div>
+            <div class="carousel-item">
+              <video autoplay muted loop playsinline>
+                <source src="./src/videos/perrito_tails.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </div>
+      <div class="hero-shape"></div>
     </section>
 
     <main>
-      <section class="hero-section" id="gallery-container">
+      <section class="hero-section" id="galeria">
         <div class="container">
           <h1 class="h1_gallery_videos">Galeria de videos</h1>
           <div class="gallery_container">
             <div class="select_option_videos">
-              <input class="button_gallery gallery_fish" type="button" value="Top 5 Pescados"/>
-              <input class="button_gallery gallery_horse" type="button" value="Top 5 Caballos"/>
-              <input class="button_gallery" type="button" value=""/>
-              <input class="button_gallery" type="button" value=""/>
+              <input
+                class="button_gallery gallery_fish"
+                type="button"
+                value="Top 5 Pescados"
+              />
+              <input
+                class="button_gallery gallery_horse"
+                type="button"
+                value="Top 5 Caballos"
+              />
+              <input
+                class="button_gallery gallery_cat"
+                type="button"
+                value="Top 5 Gatos"
+              />
+              <input
+                class="button_gallery gallery_fox"
+                type="button"
+                value="Top 5 Zorros"
+              />
             </div>
-            <div class="gallery">
-              
-            </div>
-
+            <div class="gallery"></div>
           </div>
         </div>
       </section>
 
-    <!-- <footer class="footer-area">
-      <div class="container">
-        <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
-      </div>
-    </footer> -->
+      <section class="mosaic-section" id="imagenes">
+        <h2 class="section-title">Galería de Imágenes</h2>
+        <div class="mosaic-container"></div>
+      </section>
 
-    
+      <section class="contact-section" id="contacto">
+        <div class="container">
+          <h2 class="section-title">Contacto</h2>
+          <div class="contact-container">
+            <form id="contactForm" class="contact-form">
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Asunto</label>
+                <input type="text" id="subject" name="subject" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Galería Animalística</h3>
+          <p>
+            Explora nuestra colección de momentos únicos y divertidos del reino
+            animal.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Rápidos</h3>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#galeria">Galería de Videos</a></li>
+            <li><a href="#imagenes">Galería de Imágenes</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Síguenos</h3>
+          <div class="social-links">
+            <a
+              href="https://facebook.com/random123"
+              target="_blank"
+              aria-label="Facebook"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              href="https://twitter.com/animalistica"
+              target="_blank"
+              aria-label="Twitter"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="https://instagram.com/galeria_animalistica"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://youtube.com/c/galeriaanimalistica"
+              target="_blank"
+              aria-label="YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Galería Animalística. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <div id="svgPopup" class="popup">
+      <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <h2>SVG vs Imágenes</h2>
+        <div class="comparison-container">
+          <div class="svg-examples">
+            <h3>Ejemplos SVG</h3>
+            <div class="svg-container">
+              <!-- Casa -->
+              <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" fill="skyblue" />
+                <rect y="150" width="200" height="50" fill="lightgreen" />
+                <rect
+                  x="50"
+                  y="80"
+                  width="100"
+                  height="70"
+                  fill="peachpuff"
+                  stroke="black"
+                  stroke-width="2"
+                />
+                <rect x="90" y="110" width="20" height="40" fill="brown" />
+                <circle cx="95" cy="130" r="4" fill="yellow" />
+                <rect x="60" y="90" width="20" height="20" fill="white" />
+                <rect x="120" y="90" width="20" height="20" fill="white" />
+                <polygon
+                  points="50,80 100,40 150,80"
+                  fill="saddlebrown"
+                  stroke="black"
+                  stroke-width="2"
+                />
+                <circle cx="30" cy="30" r="15" fill="yellow" />
+              </svg>
+
+              <!-- Carro -->
+              <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" fill="lightgray" />
+                <rect x="50" y="100" width="100" height="40" fill="red" />
+                <rect x="60" y="80" width="80" height="40" fill="red" />
+                <rect x="70" y="90" width="30" height="20" fill="cyan" />
+                <rect x="100" y="90" width="30" height="20" fill="cyan" />
+                <rect x="95" y="80" width="10" height="40" fill="red" />
+                <circle cx="70" cy="150" r="15" fill="black" />
+                <circle cx="70" cy="150" r="8" fill="grey" />
+                <circle cx="130" cy="150" r="15" fill="black" />
+                <circle cx="130" cy="150" r="8" fill="grey" />
+                <rect x="140" y="110" width="10" height="10" fill="yellow" />
+                <rect x="50" y="110" width="10" height="10" fill="yellow" />
+              </svg>
+
+              <!-- Robot -->
+              <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" fill="white" />
+                <rect
+                  x="70"
+                  y="40"
+                  width="60"
+                  height="50"
+                  fill="gray"
+                  stroke="black"
+                  stroke-width="2"
+                />
+                <circle cx="85" cy="60" r="10" fill="lime" />
+                <circle cx="85" cy="60" r="5" fill="white" />
+                <circle cx="115" cy="60" r="10" fill="lime" />
+                <circle cx="115" cy="60" r="5" fill="white" />
+                <line
+                  x1="100"
+                  y1="40"
+                  x2="100"
+                  y2="20"
+                  stroke="black"
+                  stroke-width="2"
+                />
+                <circle cx="100" cy="20" r="5" fill="red" />
+                <rect
+                  x="80"
+                  y="90"
+                  width="40"
+                  height="70"
+                  fill="gray"
+                  stroke="black"
+                  stroke-width="2"
+                />
+                <rect x="40" y="100" width="40" height="10" fill="gray" />
+                <rect x="120" y="100" width="40" height="10" fill="gray" />
+                <circle cx="100" cy="110" r="5" fill="red" />
+                <circle cx="100" cy="130" r="5" fill="lime" />
+                <circle cx="100" cy="150" r="5" fill="blue" />
+              </svg>
+            </div>
+
+            <!-- Imagen de comparación -->
+            <div class="image-container">
+              <h3>Imagen PNG de comparación</h3>
+              <img
+                src="src/img/image.png"
+                alt="Comparación PNG"
+                style="max-width: 75%; border-radius: 10px"
+              />
+            </div>
+          </div>
+
+          <div class="differences">
+            <h3>Diferencias Principales</h3>
+            <ul>
+              <li>
+                SVG: Gráficos vectoriales escalables sin pérdida de calidad
+              </li>
+              <li>Imágenes: Basadas en píxeles, pierden calidad al escalar</li>
+              <li>SVG: Editables y animables con CSS</li>
+              <li>SVG: Ideales para logos e iconos</li>
+              <li>SVG: Código más ligero para formas geométricas</li>
+              <li>Imágenes: Mejores para fotos y texturas complejas</li>
+              <li>SVG: Mayor accesibilidad y SEO</li>
+              <li>SVG: Interactivos y animables con JavaScript</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
