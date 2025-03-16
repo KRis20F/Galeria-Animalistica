@@ -1,0 +1,183 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgb(251,63,203);
+    background: linear-gradient(90deg, rgba(251,63,203,1) 21%, rgba(79,70,252,1) 100%);
+    overflow: hidden;
+    color: white;
+    text-shadow: 4px -1px black;
+    
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 95vh;
+}
+
+.swiper {
+    width: 100%;
+    padding: 50px 0;
+}
+
+
+.swiper-slide {
+    position: relative;
+    width: 320px;
+    aspect-ratio: 3/4;
+    border-radius: 14px;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    user-select: none;
+}
+
+
+#containerMusic {
+    display: flex;
+}
+
+
+.swiper-slide img {
+    width: 100%;
+    height: 90%;
+}
+
+audio { display: none;}
+
+.element-song {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.title-format {
+    margin-top: -40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+
+.context-format {
+    position: absolute;
+    background: #000000ad;
+    height: 100vh;
+    z-index: 99;
+    width: 221vh;
+    display: none;
+}
+
+
+
+.content {
+    background: #14558d;
+    text-align: center;
+    width: 400px;
+    padding: 70px;
+    border-radius: 30px;
+    color: white;
+    text-shadow: 4px 0px black;
+}
+
+.close {
+    color: red;
+    font-size: 3em;
+    cursor: pointer;
+    position: absolute;
+    left: 4%;
+    top: 9%;
+}
+
+.var-button {
+    cursor: pointer;
+    width: 64px;
+    background: antiquewhite;
+}
+
+.revert { 
+    transform: rotateY(192deg);
+}
+
+.container-buttons{
+    height: 79px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    position: relative;
+    top: 35px;
+}
+
+.button-container {
+    display: flex;
+    gap: 18px;
+}
+
+
+button {
+    background-color: inherit;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+}
+
+.fa-play, .fa-pause, .next, .back{
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: blue;
+}
+
+.swiper-slide-shadow-left, .swiper-slide-shadow-right {
+    height: 91% !important;
+}
+
+
+@media (max-width : 768px) {
+    .title-format {
+        font-size: 1.4em;
+    }
+
+    .swiper-slide img {
+        width: 80%;
+    }
+
+    .container-buttons {
+        gap: 1em;
+    }
+
+    .var-button {
+        width: 62px;
+        height: 62px;
+    }
+
+    .context-format {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .close {
+        left: 223px;
+        top: 34%;
+    }
+}

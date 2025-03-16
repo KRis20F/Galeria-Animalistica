@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Reproductor Kristopheeer</title>
+</head>
+<body>
+    <div class="context-format">
+        <i class="close fa-solid fa-x"></i>
+        <div class="content">
+            <h2>Opinion del Formato <span class="type"></span></h2>
+            <p id="opinionText"></p>
+        </div>
+    </div>
+    <div id="wrapper" class="swiper">
+
+        <h1 class="title-format">Wanted U by Joji en formato <span class="format"></span> </h1>
+
+        <div id="containerMusic" class="swiper-wrapper">
+            <!-- Aqui van las canciones creadas dinamicamente en el javascript washeeeeeee -->
+        </div>
+        
+
+        <div class="container-buttons">
+            <button class="var-button" onclick="changeVolume(0.1)">
+                <i class="fa-solid fa-volume-high"></i>
+            </button>
+            <button class="var-button" onclick="changeVolume(-0.1)">
+                <i class="fa-solid fa-volume-low"></i>
+            </button>
+            
+            
+            <button class="var-button" onclick="repeatAudio()">
+                <i class="fa-solid fa-repeat"></i>
+            </button>
+            <button class="var-button" onclick="toggleMute()">
+                <i class="fa-solid fa-volume-xmark"></i>
+            </button>
+            <button class="var-button" onclick="seekAudio(5)">+5</button>
+            <button class="var-button" onclick="seekAudio(-5)">-5</button>
+        </div>
+
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="./script.js"></script>
+    
+
+</body>
+</html>
